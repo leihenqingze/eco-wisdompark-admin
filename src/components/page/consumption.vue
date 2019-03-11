@@ -6,7 +6,7 @@
       mode="horizontal"
       @select="handleSelect"
     >
-      <el-menu-item index="1">制卡</el-menu-item>
+      <el-menu-item  index="1">制卡</el-menu-item>
       <el-menu-item index="2">充值</el-menu-item>
       <el-menu-item index="3">自动补助</el-menu-item>
       <el-menu-item index="4">手动补助</el-menu-item>
