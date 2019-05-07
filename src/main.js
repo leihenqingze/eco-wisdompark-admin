@@ -9,6 +9,7 @@ import '../static/css/icon.css';
 import "babel-polyfill";
 
 Vue.use(ElementUI, { size: 'small' });
+// axios.defaults.baseURL = process.env.API_ROOT
 Vue.prototype.$axios = axios;
 
 //使用钩子函数对路由进行权限跳转

@@ -6,7 +6,7 @@
       class="content-box"
       :class="{'content-collapse':collapse}"
     >
-      <v-tags></v-tags>
+
       <div class="content">
         <transition
           name="move"

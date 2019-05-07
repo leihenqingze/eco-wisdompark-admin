@@ -1,76 +1,67 @@
 <template>
-    <el-tabs v-model="activeName" >
+    <el-tabs v-model="activeName">
         <el-tab-pane label="人员管理" name="first">
             <div class="table">
-
                 <div class="container">
                     <div class="handle-box">
-
                         姓名：
                         <el-input v-model="m_name" placeholder="姓名" class="handle-input mr10"></el-input>
                         手机号：
                         <el-input v-model="m_phone" placeholder="手机号" class="handle-input mr10"></el-input>
                         <el-button type="primary" icon="search" @click="search">搜索</el-button>
-
                     </div>
-                    <el-table :data="table" border class="table" ref="multipleTable" @selection-change="handleSelectionChange">
-
-                        <el-table-column prop="cardSerialNo" label="卡面序列号" >
+                    <el-table :data="table" border class="table" ref="multipleTable"
+                              @selection-change="handleSelectionChange">
+                        <el-table-column prop="cardSerialNo" label="卡面序列号">
                         </el-table-column>
-
                         <el-table-column prop="userName" label="姓名" sortable width="150">
                         </el-table-column>
-
-                        <el-table-column prop="phoneNum" label="手机号" >
+                        <el-table-column prop="phoneNum" label="手机号">
                         </el-table-column>
-                        <el-table-column prop="deposit" label="CUP卡押金" >
+                        <el-table-column prop="deposit" label="CUP卡押金">
                         </el-table-column>
-
-
-                        <el-table-column prop="userCardNum" label="身份证号码" >
+                        <el-table-column prop="userCardNum" label="身份证号码">
                         </el-table-column>
-                        <el-table-column prop="rechargeBalance" label="CUP卡充值余额" >
+                        <el-table-column prop="rechargeBalance" label="CUP卡充值余额">
                         </el-table-column>
-                        <el-table-column prop="subsidyBalance" label="CUP卡补助余额" >
+                        <el-table-column prop="subsidyBalance" label="CUP卡补助余额">
                         </el-table-column>
 
                         <el-table-column label="操作" width="180" align="center">
                             <template slot-scope="scope">
-                                <el-button type="text" icon="el-icon-edit" @click="handleDetail(scope.row)">查看详情</el-button>
+                                <el-button type="text" icon="el-icon-edit" @click="handleDetail(scope.row)">查看详情
+                                </el-button>
                             </template>
                         </el-table-column>
                     </el-table>
                     <div class="pagination">
-                        <el-pagination background @current-change="handleCurrentChange" layout="prev, pager, next" :total=total>
+                        <el-pagination background @current-change="handleCurrentChange" layout="prev, pager, next"
+                                       :total=total>
                         </el-pagination>
                     </div>
                 </div>
 
-<!--详情-->
+                <!--详情-->
 
                 <el-dialog title="详情" :visible.sync="detailVisible" width="60%">
-                    <el-table :data="table2" border class="table" ref="multipleTable" @selection-change="handleSelectionChange">
-                        <el-table-column prop="cardSerialNo" label="卡面序列号" >
+                    <el-table :data="table2" border class="table" ref="multipleTable"
+                              @selection-change="handleSelectionChange">
+                        <el-table-column prop="cardSerialNo" label="卡面序列号">
                         </el-table-column>
-
                         <el-table-column prop="userName" label="姓名" sortable width="150">
                         </el-table-column>
-
-                        <el-table-column prop="phoneNum" label="手机号" >
+                        <el-table-column prop="phoneNum" label="手机号">
                         </el-table-column>
-                        <el-table-column prop="deposit" label="CUP卡押金" >
+                        <el-table-column prop="deposit" label="CUP卡押金">
                         </el-table-column>
-
-
-                        <el-table-column prop="userCardNum" label="身份证号码" >
+                        <el-table-column prop="userCardNum" label="身份证号码">
                         </el-table-column>
-                        <el-table-column prop="rechargeBalance" label="CUP卡充值余额" >
+                        <el-table-column prop="rechargeBalance" label="CUP卡充值余额">
                         </el-table-column>
-                        <el-table-column prop="subsidyBalance" label="CUP卡补助余额" >
+                        <el-table-column prop="subsidyBalance" label="CUP卡补助余额">
                         </el-table-column>
-
                     </el-table>
-                    <el-tabs v-model="activeName1" >
+                    <el-tabs v-model="activeName1">
                         <el-tab-pane label="充值记录" name="first">
 
                             <div class="container">
@@ -85,18 +76,20 @@
                                         :default-time="['00:00:00', '23:59:59']">
                                     </el-date-picker>
                                 </div>
-                                <el-table :data="table3" border class="table" ref="multipleTable" @selection-change="handleSelectionChange">
+                                <el-table :data="table3" border class="table" ref="multipleTable"
+                                          @selection-change="handleSelectionChange">
                                     <el-table-column prop="cardSerialNo" label="序列号" sortable width="150">
                                     </el-table-column>
                                     <el-table-column prop="amount" label="充值金额" width="120">
                                     </el-table-column>
-                                    <el-table-column prop="createTime" label="充值时间" >
+                                    <el-table-column prop="createTime" label="充值时间">
                                     </el-table-column>
 
 
                                 </el-table>
                                 <div class="pagination">
-                                    <el-pagination background @current-change="handleCurrentChange3" layout="prev, pager, next" :total=total3>
+                                    <el-pagination background @current-change="handleCurrentChange3"
+                                                   layout="prev, pager, next" :total=total3>
                                     </el-pagination>
                                 </div>
                             </div>
@@ -117,27 +110,26 @@
                                     </el-date-picker>
 
                                 </div>
-                                <el-table :data="table4" border class="table" ref="multipleTable" @selection-change="handleSelectionChange">
+                                <el-table :data="table4" border class="table" ref="multipleTable"
+                                          @selection-change="handleSelectionChange">
                                     <el-table-column prop="cardSerialNo" label="序列号" sortable width="150">
                                     </el-table-column>
                                     <el-table-column prop="amount" label="补助金额" width="120">
                                     </el-table-column>
                                     <el-table-column prop="type" label="补助类型" :formatter="ftype">
                                     </el-table-column>
-                                    <el-table-column prop="createTime" label="补助时间" >
+                                    <el-table-column prop="createTime" label="补助时间">
                                     </el-table-column>
-
 
                                 </el-table>
                                 <div class="pagination">
-                                    <el-pagination background @current-change="handleCurrentChange4" layout="prev, pager, next" :total=total4>
+                                    <el-pagination background @current-change="handleCurrentChange4"
+                                                   layout="prev, pager, next" :total=total4>
                                     </el-pagination>
                                 </div>
                             </div>
-
                         </el-tab-pane>
                         <el-tab-pane label="消费记录" name="third">
-
                             <div class="container">
                                 <div class="handle-box">
 
@@ -149,28 +141,25 @@
                                         end-placeholder="结束日期"
                                         :default-time="['00:00:00', '23:59:59']">
                                     </el-date-picker>
-
                                 </div>
-                                <el-table :data="table5" border class="table" ref="multipleTable" @selection-change="handleSelectionChange">
-                                    <el-table-column prop="cardSerialNo" label="序列号" sortable width="150">
+                                <el-table :data="table5" border class="table" ref="multipleTable"
+                                          @selection-change="handleSelectionChange">
+                                    <el-table-column prop="cardSerialNo" label="卡序列号" sortable width="150">
                                     </el-table-column>
-                                    <el-table-column prop="amount" label="补助金额" width="120">
+                                    <el-table-column prop="type" label="消费类型" :formatter="xiaofeiType">
                                     </el-table-column>
-                                    <el-table-column prop="type" label="消费类型" >
+                                    <el-table-column prop="diningType" label="用餐类型" :formatter="fdiningType">
                                     </el-table-column>
-                                    <el-table-column prop="diningType" label="用餐类型" :formatter="diningType">
+                                    <el-table-column prop="createTime" label="消费时间">
                                     </el-table-column>
-                                    <el-table-column prop="createTime" label="补助时间" >
+                                    <el-table-column prop="rechargeAmount" label="消费充值金额">
                                     </el-table-column>
-                                    <el-table-column prop="rechargeAmount" label="充值金额" >
+                                    <el-table-column prop="subsidyAmount" label="消费补助金额">
                                     </el-table-column>
-                                    <el-table-column prop="createTisubsidyAmountme" label="补助金额" >
-                                    </el-table-column>
-
-
                                 </el-table>
                                 <div class="pagination">
-                                    <el-pagination background @current-change="handleCurrentChange5" layout="prev, pager, next" :total=total5>
+                                    <el-pagination background @current-change="handleCurrentChange5"
+                                                   layout="prev, pager, next" :total=total5>
                                     </el-pagination>
                                 </div>
                             </div>
@@ -178,8 +167,6 @@
                         </el-tab-pane>
 
                     </el-tabs>
-
-
 
 
                     <span slot="footer" class="dialog-footer">
@@ -209,21 +196,25 @@
                         <el-button type="primary" icon="search" @click="search2">搜索</el-button>
                         <el-button type="text" icon="el-icon-edit" @click="handleAdd()">添加一级组织</el-button>
                     </div>
-                    <el-table :data="table2" border class="table" ref="multipleTable" @selection-change="handleSelectionChange">
+                    <el-table :data="table2" border class="table" ref="multipleTable"
+                              @selection-change="handleSelectionChange">
                         <el-table-column type="selection" width="55" align="center"></el-table-column>
-                        <el-table-column prop="id" label="ID" sortable >
+                        <el-table-column prop="id" label="ID" sortable>
                         </el-table-column>
-                        <el-table-column prop="deptName" label="一级名称" >
+                        <el-table-column prop="deptName" label="一级名称">
                         </el-table-column>
-                        <el-table-column prop="consumeIdentity" label="消费者身份" >
+                        <el-table-column prop="consumeIdentity" label="消费者身份">
                         </el-table-column>
 
-                        <el-table-column label="操作"  align="center">
+                        <el-table-column label="操作" align="center">
                             <template slot-scope="scope">
 
-                                <el-button type="text" icon="el-icon-delete" class="red" @click="handleDelete(scope.row)">删除</el-button>
+                                <el-button type="text" icon="el-icon-delete" class="red"
+                                           @click="handleDelete(scope.row)">删除
+                                </el-button>
 
-                                <el-button type="text" icon="el-icon-delete" class="red" @click="look(scope.row)">查看</el-button>
+                                <el-button type="text" icon="el-icon-delete" class="red" @click="look(scope.row)">查看
+                                </el-button>
                             </template>
                         </el-table-column>
                     </el-table>
@@ -265,10 +256,10 @@
         name: "peopel",
         data() {
             return {
-                activeName:'first',
-                activeName1:'first',
-                activeName2:'first',
-                activeName3:'first',
+                activeName: 'first',
+                activeName1: 'first',
+                activeName2: 'first',
+                activeName3: 'first',
 
                 tableData: [],
                 cur_page: 1,
@@ -284,18 +275,18 @@
 
                 /*主表查询*/
 
-                m_name :'',
-                m_phone:'',
+                m_name: '',
+                m_phone: '',
 
 
-                m_deptName:'',
+                m_deptName: '',
 
                 /*table表格*/
                 table: [],
-                table2:[],
-                table3:[],
-                table4:[],
-                table5:[],
+                table2: [],
+                table3: [],
+                table4: [],
+                table5: [],
 
                 total: 0,
                 total2: 0,
@@ -314,21 +305,22 @@
                     address: ''
                 },
 
-                addyijiform:{
+                addyijiform: {
                     consumeIdentity: null,
                     deptName: ""
 
                 },
 
 
+                cdiningType: ['早餐', '午餐', '晚餐'],
+                xiaofeitype: ['用餐', '购物'],
 
 
-
-                id:null,
+                id: null,
                 /**/
-                time1:'',
-                time2:'',
-                time3:''
+                time1: '',
+                time2: '',
+                time3: ''
 
             }
         },
@@ -342,41 +334,42 @@
             }
         },
         methods: {
+            fdiningType(val) {
+                return this.cdiningType[val.diningType];
+            },
+            xiaofeiType(val) {
+                return this.xiaofeitype[val.type];
+            },
             // 分页导航
             handleCurrentChange(val) {
-                console.log(val)
+
                 this.cur_page = val;
                 this.getData();
             },
             handleCurrentChange2(val) {
-                console.log(val)
                 this.cur_page2 = val;
                 this.getData2();
             },
             handleCurrentChange3(val) {
-                console.log(val)
                 this.cur_page3 = val;
                 this.getData3();
             },
             handleCurrentChange4(val) {
-                console.log(val)
                 this.cur_page4 = val;
                 this.getData4();
             },
             handleCurrentChange5(val) {
-                console.log(val)
                 this.cur_page5 = val;
                 this.getData4();
             },
 
 
-/*补助类型*/
+            /*补助类型*/
 
 
-            ftype(row){
+            ftype(row) {
                 console.log(row)
             },
-
 
 
             getData() {
@@ -417,13 +410,13 @@
                         id: this.id,
                         pageSize: 10,
                         startTime: this.time1[0],
-                        endTime:this.time1[1],
+                        endTime: this.time1[1],
                         currentPage: this.cur_page3,
 
                     }
                 ).then(({data}) => {
                     const result = data.data;
-                    console.log(result,11111)
+                    console.log(result, 11111)
                     this.table3 = result.records;
                     this.total3 = result.total;
                 });
@@ -437,40 +430,33 @@
                         id: this.id,
                         pageSize: 10,
                         startTime: this.time2[0],
-                        endTime:this.time2[1],
+                        endTime: this.time2[1],
                         currentPage: this.cur_page4
                     }
                 ).then(({data}) => {
                     const result = data.data;
-                    console.log(result,11111)
+                    console.log(result, 11111)
                     this.table4 = result.records;
                     this.total4 = result.total;
                 })
             },
             getData5() {
-
                 /*消费记录*/
                 this.$axios.post('/api/consume-record/searchUserConsumeRecordDtos',
                     {
                         id: this.id,
                         pageSize: 10,
                         startTime: this.time3[0],
-                        endTime:this.time3[1],
+                        endTime: this.time3[1],
                         currentPage: this.cur_page5
                     }
                 ).then(({data}) => {
                     const result = data.data;
-                    console.log(result,11111)
+                    console.log(result, 11111)
                     this.table5 = result.records;
                     this.total5 = result.total;
                 })
             },
-
-
-
-
-
-
 
 
             search() {
@@ -485,7 +471,7 @@
             look(row) {
                 var id = row.id;
                 console.log(id)
-                this.$router.push({path:'erji',query:{id:id}})
+                this.$router.push({path: 'erji', query: {id: id}})
             },
 
             /*过滤器*/
@@ -497,11 +483,6 @@
             },
 
 
-
-
-
-
-
             filterTag(value, row) {
                 return row.tag === value;
             },
@@ -510,19 +491,15 @@
                 this.addVisible = true;
             },
             handleDetail(row) {
-
                 var id = row.id;
                 this.id = row.id;
                 this.detailVisible = true;
-                this.$axios.post('/api/user/searchUserDtos',
+                this.$axios.post('/api/user/getUser',
                     {
-                        id: this.id,
-                        pageSize: 1,
+                        id: this.id
                     }
                 ).then(({data}) => {
-                    const result = data.data;
-                    console.log(result,11111)
-                    this.table2 = result.records;
+                    this.table2 = data;
                 });
 
                 this.getData3();
@@ -532,7 +509,7 @@
 
             },
 
-            handleDelete( row) {
+            handleDelete(row) {
                 var id = row.id;
                 this.delVisible = true;
 
@@ -543,17 +520,10 @@
                     }
                 ).then(({data}) => {
                     const result = data.data;
-                    console.log(result,11111)
-
-
                     this.getData2();
                     this.$message.success('删除成功')
 
                 });
-
-
-
-
 
 
             },
@@ -606,15 +576,18 @@
         width: 300px;
         display: inline-block;
     }
-    .del-dialog-cnt{
+
+    .del-dialog-cnt {
         font-size: 16px;
         text-align: center
     }
-    .table{
+
+    .table {
         width: 100%;
         font-size: 14px;
     }
-    .red{
+
+    .red {
         color: #ff0000;
     }
 </style>

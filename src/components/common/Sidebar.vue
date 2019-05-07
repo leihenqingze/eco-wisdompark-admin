@@ -1,28 +1,54 @@
 <template>
     <div class="sidebar">
-        <el-menu class="sidebar-el-menu" :default-active="onRoutes" :collapse="collapse" background-color="#324157"
-            text-color="#bfcbd9" active-text-color="#20a0ff" unique-opened router>
+        <el-menu
+            class="sidebar-el-menu"
+            :default-active="onRoutes"
+            :collapse="collapse"
+            background-color="#324157"
+            text-color="#bfcbd9"
+            active-text-color="#20a0ff"
+            unique-opened
+            router
+        >
             <template v-for="item in items">
                 <template v-if="item.subs">
-                    <el-submenu :index="item.index" :key="item.index">
+                    <el-submenu
+                        :index="item.index"
+                        :key="item.index"
+                    >
                         <template slot="title">
                             <i :class="item.icon"></i><span slot="title">{{ item.title }}</span>
                         </template>
                         <template v-for="subItem in item.subs">
-                            <el-submenu v-if="subItem.subs" :index="subItem.index" :key="subItem.index">
+                            <el-submenu
+                                v-if="subItem.subs"
+                                :index="subItem.index"
+                                :key="subItem.index"
+                            >
                                 <template slot="title">{{ subItem.title }}</template>
-                                <el-menu-item v-for="(threeItem,i) in subItem.subs" :key="i" :index="threeItem.index">
+                                <el-menu-item
+                                    v-for="(threeItem,i) in subItem.subs"
+                                    :key="i"
+                                    :index="threeItem.index"
+                                >
                                     {{ threeItem.title }}
                                 </el-menu-item>
                             </el-submenu>
-                            <el-menu-item v-else :index="subItem.index" :key="subItem.index">
+                            <el-menu-item
+                                v-else
+                                :index="subItem.index"
+                                :key="subItem.index"
+                            >
                                 {{ subItem.title }}
                             </el-menu-item>
                         </template>
                     </el-submenu>
                 </template>
                 <template v-else>
-                    <el-menu-item :index="item.index" :key="item.index">
+                    <el-menu-item
+                        :index="item.index"
+                        :key="item.index"
+                    >
                         <i :class="item.icon"></i><span slot="title">{{ item.title }}</span>
                     </el-menu-item>
                 </template>
@@ -144,12 +170,48 @@
                 ]
             }
         },
-        computed:{
-            onRoutes(){
-                return this.$route.path.replace('/','');
+        computed: {
+            onRoutes() {
+                if (!this.$route.redirectedFrom) {
+                    return this.$route.path.replace('/', '');
+                } else {
+                    if (this.$route.redirectedFrom == '/consumption/consumption') {
+                        this.$router.push('/consumption');
+                    }
+                    if (this.$route.redirectedFrom == '/consumption/Finance') {
+                        this.$router.push('/Finance');
+                    }
+                    if (this.$route.redirectedFrom == '/consumption/people') {
+                        this.$router.push('/people');
+                    }
+                    if (this.$route.redirectedFrom == '/consumption/bus') {
+                        this.$router.push('/bus');
+                    }
+                    if (this.$route.redirectedFrom == '/consumption/sys') {
+                        this.$router.push('/sys');
+                    }
+                    if (this.$route.redirectedFrom == '/Finance/consumption') {
+                        this.$router.push('/consumption');
+                    }
+                    if (this.$route.redirectedFrom == '/Finance/Finance') {
+                        this.$router.push('/Finance');
+                    }
+                    if (this.$route.redirectedFrom == '/Finance/people') {
+                        this.$router.push('/people');
+                    }
+                    if (this.$route.redirectedFrom == '/Finance/bus') {
+                        this.$router.push('/bus');
+                    }
+                    if (this.$route.redirectedFrom == '/Finance/sys') {
+                        this.$router.push('/sys');
+                    }
+                }
+                console.log(this.$route.redirectedFrom)
+
+
             }
         },
-        created(){
+        created() {
             // 通过 Event Bus 进行组件间通信，来折叠侧边栏
             bus.$on('collapse', msg => {
                 this.collapse = msg;
@@ -159,21 +221,21 @@
 </script>
 
 <style scoped>
-    .sidebar{
+    .sidebar {
         display: block;
         position: absolute;
         left: 0;
         top: 70px;
-        bottom:0;
+        bottom: 0;
         overflow-y: scroll;
     }
-    .sidebar::-webkit-scrollbar{
+    .sidebar::-webkit-scrollbar {
         width: 0;
     }
-    .sidebar-el-menu:not(.el-menu--collapse){
+    .sidebar-el-menu:not(.el-menu--collapse) {
         width: 250px;
     }
     .sidebar > ul {
-        height:100%;
+        height: 100%;
     }
 </style>

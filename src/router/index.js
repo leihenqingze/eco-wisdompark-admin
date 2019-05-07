@@ -31,7 +31,14 @@ export default new Router({
                 {
                     path: '/Finance',
                     component: resolve => require(['../components/page/Finance.vue'], resolve),
-                    meta: { title: '财务管理' }
+                    meta: { title: '财务管理' },
+                    children: [
+                        { path: '/staff', redirect: 'staff' },
+                        { path: 'staff', component: resolve => require(['../components/page/finance-admin-page/staff.vue'], resolve) },
+                        { path: 'non-staff', component: resolve => require(['../components/page/finance-admin-page/non-staff.vue'], resolve) },
+                        { path: 'guard', component: resolve => require(['../components/page/finance-admin-page/guard.vue'], resolve) },
+                        { path: 'procter', component: resolve => require(['../components/page/finance-admin-page/procter.vue'], resolve) },
+                    ]
                 },
                 {
                     path: '/people',
