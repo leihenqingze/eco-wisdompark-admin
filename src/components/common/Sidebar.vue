@@ -59,6 +59,7 @@
 
 <script>
     import bus from '../common/bus';
+
     export default {
         data() {
             return {
@@ -87,6 +88,55 @@
                         title: '班车管理',
 
                     },
+                    {
+                        icon: 'el-icon-lx-calendar',
+                        index: 'restaurant',
+                        title: '餐厅管理',
+
+                    },
+                    {
+                        icon: 'el-icon-lx-calendar',
+                        index: 'apartment',
+                        title: '公寓管理',
+
+                    },
+                    {
+                        icon: 'el-icon-lx-calendar',
+                        index: 'fitness',
+                        title: '全民健身',
+
+                    },
+                    {
+                        icon: 'el-icon-lx-calendar',
+                        index: 'knowledge',
+                        title: '知识图谱',
+
+                    },
+                    {
+                        icon: 'el-icon-lx-calendar',
+                        index: 'smartsearch',
+                        title: '智能搜索',
+
+                    },
+                    {
+                        icon: 'el-icon-lx-calendar',
+                        index: 'dietary',
+                        title: '运动膳食',
+
+                    },
+                    {
+                        icon: 'el-icon-lx-calendar',
+                        index: 'training',
+                        title: '训练指标',
+
+                    },
+                    {
+                        icon: 'el-icon-lx-calendar',
+                        index: 'tactical',
+                        title: '战术分析',
+
+                    },
+
                     {
                         icon: 'el-icon-setting',
                         index: 'sys',
@@ -205,6 +255,21 @@
                     if (this.$route.redirectedFrom == '/Finance/sys') {
                         this.$router.push('/sys');
                     }
+                    if (this.$route.redirectedFrom == '/people/consumption') {
+                        this.$router.push('/consumption');
+                    }
+                    if (this.$route.redirectedFrom == '/people/Finance') {
+                        this.$router.push('/Finance');
+                    }
+                    if (this.$route.redirectedFrom == '/people/people') {
+                        this.$router.push('/people');
+                    }
+                    if (this.$route.redirectedFrom == '/people/bus') {
+                        this.$router.push('/bus');
+                    }
+                    if (this.$route.redirectedFrom == '/people/sys') {
+                        this.$router.push('/sys');
+                    }
                 }
                 console.log(this.$route.redirectedFrom)
 
@@ -212,6 +277,47 @@
             }
         },
         created() {
+            console.log(localStorage.getItem("dep"));
+            console.log(this.items);
+
+            if (localStorage.getItem("dep") == 0) {
+
+                this.items = [
+                    {
+                        icon: 'el-icon-lx-calendar',
+                        index: 'consumption',
+                        title: '消费管理',
+
+                    }
+                ];
+                this.$router.push('/consumption');
+
+                console.log("膳食处");
+
+            }
+            if (localStorage.getItem("dep") == 1) {
+                this.items = [
+                    {
+                        icon: 'el-icon-lx-emoji',
+                        index: 'Finance',
+                        title: '财务统计',
+
+                    }
+                ];
+                this.$router.push('/Finance');
+
+            }
+            if (localStorage.getItem("dep") == 2) {
+                this.items = [
+                    {
+                        icon: 'el-icon-location',
+                        index: 'bus',
+                        title: '班车管理',
+                    }
+                ];
+                this.$router.push('/bus');
+
+            }
             // 通过 Event Bus 进行组件间通信，来折叠侧边栏
             bus.$on('collapse', msg => {
                 this.collapse = msg;
@@ -229,12 +335,15 @@
         bottom: 0;
         overflow-y: scroll;
     }
+
     .sidebar::-webkit-scrollbar {
         width: 0;
     }
+
     .sidebar-el-menu:not(.el-menu--collapse) {
         width: 250px;
     }
+
     .sidebar > ul {
         height: 100%;
     }

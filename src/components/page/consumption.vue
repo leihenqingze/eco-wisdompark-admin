@@ -26,7 +26,7 @@ export default {
 
     };
   },
-  created() {},
+  created() {this.$router.push("/consumption/making-card");},
   methods: {
     handleSelect(key) {
       if (key == 1) {

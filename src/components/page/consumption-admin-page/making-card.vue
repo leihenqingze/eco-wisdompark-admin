@@ -60,7 +60,7 @@ export default {
       makingCpuCardDto: {
         cardId: "",
         cardSerialNo: "",
-        deposit: 20,
+        deposit: 200,
         deptIds: [],
         deptId: 0,
         phoneNum: "",

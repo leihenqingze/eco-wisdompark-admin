@@ -24,7 +24,7 @@
 
             };
         },
-        created() {},
+        created() { this.$router.push("/Finance/staff");},
         methods: {
             handleSelect(key) {
                 if (key == 1) {

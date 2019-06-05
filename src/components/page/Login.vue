@@ -1,7 +1,7 @@
 <template>
     <div class="login-wrap">
         <div class="ms-login">
-            <div class="ms-title">后台管理系统</div>
+            <div class="ms-title">NSTC后台管理系统</div>
             <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="0px" class="ms-content">
                 <el-form-item prop="username">
                     <el-input v-model="ruleForm.username" placeholder="username">
@@ -58,8 +58,10 @@
                             }
                         ).then(({data}) => {
                             if (data.code == 200) {
+                                console.log(data);
                                 localStorage.setItem('ms_username',this.ruleForm.username);
-                                this.$router.push('/');
+                                localStorage.setItem('dep',data.data);
+                                 this.$router.push('/');
                             } else {
                                 console.log(data);
                                 this.$message({

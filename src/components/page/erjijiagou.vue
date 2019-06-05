@@ -12,7 +12,7 @@
                 <el-table-column type="selection" width="55" align="center"></el-table-column>
                 <el-table-column prop="id" label="ID" sortable >
                 </el-table-column>
-                <el-table-column prop="deptName" label="一级名称" >
+                <el-table-column prop="deptName" label="部门名称" >
                 </el-table-column>
                 <el-table-column prop="consumeIdentity" label="消费者身份" >
                 </el-table-column>
@@ -31,10 +31,10 @@
             <el-form ref="form" :model="addyijiform" label-width="100px">
                 <el-form-item label="消费身份">
                     <el-select v-model="addyijiform.consumeIdentity" placeholder="请选择活动区域">
-                        <el-option label="训练局职工" value="1"></el-option>
-                        <el-option label="非训练局职工" value="2"></el-option>
-                        <el-option label="保安" value="3"></el-option>
-                        <el-option label="保洁" value="4"></el-option>
+                        <el-option label="训练局职工" value="0"></el-option>
+                        <el-option label="非训练局职工" value="1"></el-option>
+                        <el-option label="保安" value="2"></el-option>
+                        <el-option label="保洁" value="3"></el-option>
                     </el-select>
                 </el-form-item>
                 <el-form-item label="组织名称">

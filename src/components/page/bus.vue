@@ -148,7 +148,7 @@
             <el-col :span="6" class="m-b-20">
                 <el-card class="box-card">
                     <div class="text item">
-                        车牌:京AC0229
+                        车牌:京AC0221
                     </div>
                     <!--<div class="text item">-->
                     <!--所属组织:国家体育总局训练局-->
@@ -157,14 +157,67 @@
                     <!--车型:金龙KLQ6127Q-->
                     <!--</div>-->
                     <div style="text-align:center">
-                        <el-button type="primary" @click="detail(10)" class="detail">查看详情</el-button>
+                        <el-button type="primary" @click="detail(11)" class="detail">查看详情</el-button>
                     </div>
                 </el-card>
             </el-col>
+
             <el-col :span="6" class="m-b-20">
                 <el-card class="box-card">
                     <div class="text item">
-                        车牌:京A95811
+                        车牌:京A95810
+                    </div>
+                    <!--<div class="text item">-->
+                    <!--所属组织:国家体育总局训练局-->
+                    <!--</div>-->
+                    <!--<div class="text item">-->
+                    <!--车型:金龙KLQ6127Q-->
+                    <!--</div>-->
+                    <div style="text-align:center">
+                        <el-button type="primary" @click="detail(11)" class="detail">查看详情</el-button>
+                    </div>
+                </el-card>
+            </el-col>
+
+            <el-col :span="6" class="m-b-20">
+                <el-card class="box-card">
+                    <div class="text item">
+                        车牌:京A10318D
+                    </div>
+                    <!--<div class="text item">-->
+                    <!--所属组织:国家体育总局训练局-->
+                    <!--</div>-->
+                    <!--<div class="text item">-->
+                    <!--车型:金龙KLQ6127Q-->
+                    <!--</div>-->
+                    <div style="text-align:center">
+                        <el-button type="primary" @click="detail(11)" class="detail">查看详情</el-button>
+                    </div>
+                </el-card>
+            </el-col>
+
+            <el-col :span="6" class="m-b-20">
+                <el-card class="box-card">
+                    <div class="text item">
+                        车牌:京A10306D
+                    </div>
+                    <!--<div class="text item">-->
+                    <!--所属组织:国家体育总局训练局-->
+                    <!--</div>-->
+                    <!--<div class="text item">-->
+                    <!--车型:金龙KLQ6127Q-->
+                    <!--</div>-->
+                    <div style="text-align:center">
+                        <el-button type="primary" @click="detail(11)" class="detail">查看详情</el-button>
+                    </div>
+                </el-card>
+            </el-col>
+
+
+            <el-col :span="6" class="m-b-20">
+                <el-card class="box-card">
+                    <div class="text item">
+                        车牌:京A95808
                     </div>
                     <!--<div class="text item">-->
                     <!--所属组织:国家体育总局训练局-->

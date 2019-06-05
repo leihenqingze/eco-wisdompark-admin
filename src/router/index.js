@@ -43,7 +43,12 @@ export default new Router({
                 {
                     path: '/people',
                     component: resolve => require(['../components/page/peopel.vue'], resolve),
-                    meta: { title: '人员管理' }
+                    meta: { title: '人员管理' },
+                    children: [
+                        { path: '/person', redirect: 'person' },
+                        { path: 'person', component: resolve => require(['../components/page/person-manager/person.vue'], resolve) },
+                        { path: 'dept', component: resolve => require(['../components/page/person-manager/dept.vue'], resolve) },
+                    ]
                 },
                 {
                     path: '/bus',
@@ -54,6 +59,16 @@ export default new Router({
                     path: '/sys',
                     component: resolve => require(['../components/page/sys.vue'], resolve),
                     meta: { title: '系统管理' }
+                },
+                {
+                    path: '/restaurant',
+                    component: resolve => require(['../components/page/restaurant.vue'], resolve),
+                    meta: { title: '餐厅管理' }
+                },
+                {
+                    path: '/apartment',
+                    component: resolve => require(['../components/page/apartment.vue'], resolve),
+                    meta: { title: '公寓管理' }
                 },
 
 
