@@ -70,7 +70,26 @@ export default new Router({
                     component: resolve => require(['../components/page/apartment.vue'], resolve),
                     meta: { title: '公寓管理' }
                 },
-
+                {
+                    path: '/fitness',
+                    component: resolve => require(['../components/page/fitness.vue'], resolve),
+                    meta: { title: '全民健身' }
+                },
+                {
+                    path: '/knowledge',
+                    component: resolve => require(['../components/page/knowledge.vue'], resolve),
+                    meta: { title: '知识图谱' }
+                },
+                {
+                    path: '/dietary',
+                    component: resolve => require(['../components/page/dietary.vue'], resolve),
+                    meta: { title: '运动膳食' }
+                },
+                {
+                    path: '/tactical',
+                    component: resolve => require(['../components/page/tactical.vue'], resolve),
+                    meta: { title: '战术分析' }
+                },
 
                 {
                     path: '/erji',
